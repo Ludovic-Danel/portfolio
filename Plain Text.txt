@@ -1,0 +1,3 @@
+Artwork: num. artwork, title, description, picture, created_at,
+Has, 0N  Tag, 0N ARtwork
+Tag: num. tag, name, description

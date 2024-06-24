@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TagRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Tag
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Artwork::class, mappedBy="tag")
+     */
+    private $artworks;
+
+    public function __construct()
+    {
+        $this->artworks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,33 @@ class Tag
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Artwork>
+     */
+    public function getArtworks(): Collection
+    {
+        return $this->artworks;
+    }
+
+    public function addArtwork(Artwork $artwork): self
+    {
+        if (!$this->artworks->contains($artwork)) {
+            $this->artworks[] = $artwork;
+            $artwork->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArtwork(Artwork $artwork): self
+    {
+        if ($this->artworks->removeElement($artwork)) {
+            $artwork->removeTag($this);
+        }
 
         return $this;
     }

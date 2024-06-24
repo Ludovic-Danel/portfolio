@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArtworkRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Artwork
      * @ORM\Column(type="datetime")
      */
     private $drawingCreatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="artworks")
+     */
+    private $tag;
+
+    public function __construct()
+    {
+        $this->tag = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -104,6 +116,30 @@ class Artwork
     public function setDrawingCreatedAt(\DateTimeInterface $drawingCreatedAt): self
     {
         $this->drawingCreatedAt = $drawingCreatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTag(): Collection
+    {
+        return $this->tag;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tag->contains($tag)) {
+            $this->tag[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        $this->tag->removeElement($tag);
 
         return $this;
     }

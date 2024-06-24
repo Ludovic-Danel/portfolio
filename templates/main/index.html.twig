@@ -4,22 +4,27 @@
 
 {% block body %}
 
-    <h1>Liste des Artworks</h1>
+    <h1>Digital Artist</h1>
 
-    <ul>
-        {% for artwork in artworks %}
-            <li>
-                <h2>{{ artwork.title }}</h2>
-                <p>{{ artwork.description }}</p>
-                <img src="{{ artwork.picture }}" alt="{{ artwork.title }}" style="max-width: 400px;">
-                <p>Date de création du dessin : {{ artwork.drawingCreatedAt|date('d/m/Y') }}</p>
-                <p>Tags :</p>
-                <ul>
-                    {% for tag in artwork.getTag() %}
-                        <li>{{ tag.name }}</li>
-                    {% endfor %}                </ul>
-            </li>
+    <div class="tags">
+        {% for tag in tags %}
+            <button> {{tag.name}}</button>
         {% endfor %}
-    </ul>
+    </div>
 
+    <div class="lastPicture">
+
+        {% for artwork in artworks %}
+                <div class="card">
+                    <a href="{{ artwork.id }}"><img class="picture" src="{{ artwork.picture }}" alt="{{ artwork.title }}">   
+                     
+
+                        <div class="title">
+                            <p>{{ artwork.title }} </p>
+                        </div>  
+                    </a> 
+                </div>
+        {% endfor %}
+
+    </div>    
 {% endblock %}

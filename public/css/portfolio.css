@@ -1,9 +1,67 @@
-body {
-    background-color: black;
+/* MOBILE FIRST */
+  body {
+    background-color: rgb(67, 65, 65);
     color: antiquewhite;
     margin: 0;
 }
-h1{
+header{
+    display: flex;
+    justify-content: space-between;
+}
+/* MENU */
+
+#LeMenu { 
+    max-width:1400px; 
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+  }
+  #LeMenu > a { 
+    padding:10px 20px; 
+    margin:0 2px;
+    text-decoration:none;
+    font: 1em Arial, Helvetica, sans-serif;
+    text-transform:uppercase; /* en majuscules */
+    border-radius:30px;
+    text-align:center;
+
+  }
+  #LeMenu > a:hover {	
+    background:#242323; 
+    color: #f8f9fa;	
+  }
+  
+  /* bouton menu burger */
+  #CmdMenu { 
+    position :fixed; 
+    top :10px; 
+    right :10px; 
+    z-index :50;
+    padding:5px 8px; 
+    color:rgb(249, 247, 247);
+    background: #66676a;
+    border-radius:5px;
+    cursor:pointer;
+  }
+  #CmdMenu:hover {	
+    background:#242323; 
+    color: #f8f9fa;	
+    border: solid 1px #0f1011;
+  }
+  
+  #LeMenu {
+    flex-direction:column;
+  }
+  #CmdMenu { 
+    display:block;
+  }
+
+/* Fin de menu */
+  
+p{
+    margin: 1em;
+}
+h1,h2{
     margin: 1rem;
 }
 a {
@@ -15,7 +73,6 @@ a {
     overflow-x: auto;
 
 }
-
 button{
     margin: 0.5rem;
     padding: 8px !important;
@@ -33,14 +90,22 @@ button{
     width: 50%; 
     position: relative;
     display: flex;
-
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1; 
+    overflow: hidden;    
 }
 
 img.picture {
-    display: block;
-    max-width: 100%;
+    max-height: 100%;
+    width: fit-content;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
 
+img.picture:hover {
+    transform: scale(0.8); 
+}
 .title p {
     display: block;
     position: absolute;
@@ -51,16 +116,90 @@ img.picture {
     padding: 0.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: small;
 
 }
 
-@media (min-width: 768px) {
-    .card {
-        max-width: 33%;
+.artwork-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.artwork-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.artwork-container img:hover {
+    transform: scale(1.05);
+}
+
+.artwork-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.artwork-date {
+    color: rgb(217, 214, 214);
+    margin-bottom: 20px;
+}
+
+.artwork-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+
+
+    .artwork-container {
+        padding: 10px;
+    }
+
+    .artwork-title {
+        font-size: 1.5em;
+    }
+
+    .artwork-description {
+        font-size: 1em;
     }
 }
 
-@media (min-width: 1027px) {
+
+@media (min-width: 768px) {
+    #LeMenu {
+        flex-direction:row;
+        /*flex-wrap:wrap;*/
+      }
+      #LeMenu > a {
+        display:flex;
+        align-items:center;
+        /*flex-wrap:wrap;*/
+      }
+      #CmdMenu { 
+        display:none;
+      }
+      #LeMenu > a { 
+        padding:5px 10px; 
+        margin:0 2px;
+      }
+    .card {
+        max-width: 33%;
+    }
+    .title p {
+        font-size: medium;
+    }
+}
+
+@media (min-width: 1024px) {
     .card {
         max-width: 25%;
     }

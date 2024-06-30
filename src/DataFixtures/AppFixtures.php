@@ -36,13 +36,13 @@ class AppFixtures extends Fixture
         //je créer un tableau vide pour tout les objets artwork crée
         $allArtwork = [];
 
-        //je crée 50 artworks
-        for ($i = 0; $i < 50; $i++) {
+        //je crée 25 artworks en portrait et 25 en paysage
+        for ($i = 0; $i < 25; $i++) {
 
             $newArtwork = new Artwork();
             $newArtwork->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
             $newArtwork->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true));
-            $newArtwork->setPicture("https://picsum.photos/seed/".$i."/600/400");
+            $newArtwork->setPicture("https://picsum.photos/seed/".$i."/800/600");
             $newArtwork->setCreatedAt(new \DateTime());
             $newArtwork->setDrawingCreatedAt($faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'));
 
@@ -56,6 +56,26 @@ class AppFixtures extends Fixture
 
             $allArtwork[] = $newArtwork;
         }
+        for ($i = 0; $i < 25; $i++) {
+
+            $newArtwork = new Artwork();
+            $newArtwork->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
+            $newArtwork->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true));
+            $newArtwork->setPicture("https://picsum.photos/seed/1".$i."/600/800");
+            $newArtwork->setCreatedAt(new \DateTime());
+            $newArtwork->setDrawingCreatedAt($faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'));
+
+            // Sélection aléatoire de 4 tags parmi tous les tags disponibles
+            $randomTags = $this->getRandomTags($allTags, 4);
+            foreach ($randomTags as $tag) {
+                $newArtwork->addTag($tag);
+            }
+
+            $manager->persist($newArtwork);
+
+            $allArtwork[] = $newArtwork;
+        }
+
 
 
 

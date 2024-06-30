@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ artwork.title }} - Artwork Details{% endblock %}
+
+
+{% block body %}
+    <div class="artwork-container">
+        <h2 class="artwork-title">{{ artwork.title }}</h2>
+
+        <p class="artwork-date">créé le {{ artwork.drawingCreatedAt|date('d/m/Y') }}</p>
+
+        <img class="picture" src="{{ artwork.picture }}" alt="{{ artwork.title }}">
+
+        <p class="artwork-description">{{ artwork.description }}</p>
+    </div>
+{% endblock %}

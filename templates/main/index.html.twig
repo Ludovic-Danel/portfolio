@@ -1,22 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!!{% endblock %}
+{% block title %}Digital Artist{% endblock %}
 
 {% block body %}
 
-    <h1>Digital Artist</h1>
 
-    <div class="tags">
+{#     <div class="tags">
         {% for tag in tags %}
-            <button> {{tag.name}}</button>
+            <button > {{tag.name}}</button>
         {% endfor %}
     </div>
-
+ #}
+ <h2>Mes dernières créations : </h2>
     <div class="lastPicture">
 
         {% for artwork in artworks %}
                 <div class="card">
-                    <a href="{{ artwork.id }}"><img class="picture" src="{{ artwork.picture }}" alt="{{ artwork.title }}">   
+                    <a href="{{ path('app_show', {'id': artwork.id}) }}"><img class="picture" src="{{ artwork.picture }}" alt="{{ artwork.title }}">   
                      
 
                         <div class="title">

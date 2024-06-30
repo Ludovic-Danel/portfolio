@@ -25,5 +25,18 @@ class MainController extends AbstractController
         ]);
     }
 
-    
+     /**
+     * @Route("/artwork/{id}", name="app_show", requirements={"id": "\d+"})
+     */
+    public function  show($id, ArtworkRepository $ArtworkRepository) :Response
+    {
+        $Artwork = $ArtworkRepository->find($id);
+        // ! si l'artwork  n'existe pas : 404
+        if ($Artwork === null){ throw $this->createNotFoundException("cet artwork n'existe pas");}
+
+        return $this->render('main/show.html.twig', [
+            'artwork' => $Artwork,
+         ]);
+ 
+    }    
 }

@@ -3,28 +3,27 @@
 {% block title %}Digital Artist{% endblock %}
 
 {% block body %}
+<h2>Découvrez l'Art Digital sous un Nouveau Jour</h2>
+<p class="presentation">Bienvenue dans mon univers créatif, un espace où l'imagination rencontre la technologie pour donner naissance à des œuvres d'art uniques et captivantes. Sur ce site, je vous invite à explorer les multiples facettes de l'art digital à travers mes yeux et ma vision.</p>
+ <h3>Mes dernières créations : </h3>
 
-
-{#     <div class="tags">
-        {% for tag in tags %}
-            <button > {{tag.name}}</button>
-        {% endfor %}
+ <div class="carousel">
+        <div class="carousel-inner">
+                {% for artwork in artworks %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ artwork.picture }}" alt="Image {{ loop.index }}">
+                            <a class="voir" href="{{ path('app_show', {'id': artwork.id}) }}">Ouvrir</a>
+                    </div>
+                {% endfor %}
     </div>
- #}
- <h2>Mes dernières créations : </h2>
-    <div class="lastPicture">
+        <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+  </div>
 
-        {% for artwork in artworks %}
-                <div class="card">
-                    <a href="{{ path('app_show', {'id': artwork.id}) }}"><img class="picture" src="{{ artwork.picture }}" alt="{{ artwork.title }}">   
-                     
 
-                        <div class="title">
-                            <p>{{ artwork.title }} </p>
-                        </div>  
-                    </a> 
-                </div>
-        {% endfor %}
 
-    </div>    
+
+
+
+  
 {% endblock %}

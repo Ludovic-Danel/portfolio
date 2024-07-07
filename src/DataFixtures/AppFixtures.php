@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         $faker = \Faker\Factory::create();
 
         // je crée mes tags
-        $tags = ["portrait", "science-fiction", "jeux-video", "femme", "manga", "paysage", "personnage", "fantasy", "animal", "Fantastique", "abstrait", "érotique", "humoristique", "Bande-dessinée", "crayon", "Western"];
+        $tags = ["Portrait", "Science-fiction", "Jeux-video", "Femme", "Manga", "Paysage", "Personnage", "Fantasy", "Animal", "Fantastique", "Abstrait", "Erotique", "Humoristique", "Bande-dessinée", "Crayon", "Western"];
 
         // Tableau vide pour tous les objets tags que je vais créer
         $allTags = [];
@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
 
             $newTag = new Tag();
             $newTag->setName($tag);
-            $newTag->setDescription("dessin qui parle de ". $tag);
+            $newTag->setDescription("Dessin qui parle de ". $tag);
 
             $manager->persist($newTag);
 
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 25; $i++) {
 
             $newArtwork = new Artwork();
-            $newArtwork->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true));
+            $newArtwork->setTitle($faker->words($nb = 3, $asText = true));
             $newArtwork->setDescription($faker->paragraph($nbSentences = 3, $variableNbSentences = true));
             $newArtwork->setPicture("https://picsum.photos/seed/".$i."/800/600");
             $newArtwork->setCreatedAt(new \DateTime());

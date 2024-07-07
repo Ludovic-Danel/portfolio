@@ -38,7 +38,25 @@ class TagRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
+    /**
+     * @param int $tagId
+     * @return Artwork[]
+     */
+    public function findArtworksByTagId(int $tagId): array
+    {
+        $entityManager = $this->getEntityManager();
 
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Artwork a
+            JOIN a.tag t
+            WHERE t.id = :tagId'
+        )->setParameter('tagId', $tagId);
+
+        return $query->getResult();
+    }  
+    
 //    /**
 //     * @return Tag[] Returns an array of Tag objects
 //     */

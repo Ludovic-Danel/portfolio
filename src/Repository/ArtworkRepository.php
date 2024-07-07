@@ -42,7 +42,7 @@ class ArtworkRepository extends ServiceEntityRepository
      /**
      * @return Artwork[] Returns an array of Artwork objects
      */
-    public function findLatestArtworks(int $limit = 12)
+    public function findLatestArtworks(int $limit = 3)
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.drawingCreatedAt', 'DESC')

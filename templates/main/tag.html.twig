@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+    {# {{ dump(artworkTags) }} #}
+<div class="tagPresentation">
+    <h2>{{tag.name}}</h2>
+    <p>{{tag.description}}</p>
+</div>
+
+<div class="lastPicture">
+
+    {% for artworkTag in artworkTags %}
+        <div class="card">
+                <a href="{{ path('app_show', {'id': artworkTag.id}) }}"><img class="picture" src="{{ artworkTag.picture }}" alt="{{ artworkTag.title }}">   
+                
+
+                    <div class="title">
+                        <p>{{ artworkTag.title }} </p>
+                    </div>  
+                </a> 
+            </div>
+    {% endfor %}
+
+</div>    
+{% endblock %}

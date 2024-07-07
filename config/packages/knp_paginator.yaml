@@ -1,0 +1,10 @@
+knp_paginator:
+    page_range: 5                        # nombre de pages à afficher dans la pagination
+    default_options:
+        page_name: page                  # le nom du paramètre GET utilisé pour la page
+        sort_field_name: sort            # le nom du paramètre GET utilisé pour trier les résultats
+        sort_direction_name: direction   # le nom du paramètre GET utilisé pour la direction de tri
+        distinct: true                   # si les résultats doivent être distincts
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'  # modèle de pagination
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'   # modèle de lien de tri

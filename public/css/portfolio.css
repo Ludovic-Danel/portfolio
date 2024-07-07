@@ -1,112 +1,160 @@
 /* MOBILE FIRST */
-  body {
-    background-color: rgb(67, 65, 65);
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+    min-height: 100vh;
+    background: linear-gradient(165deg, rgb(51, 51, 52), rgb(5, 5, 5), rgb(51, 51, 52));
     color: antiquewhite;
-    margin: 0;
+    margin: auto;
 }
-header{
+
+
+header {
     display: flex;
     justify-content: space-between;
 }
+
 /* MENU */
 
-#LeMenu { 
-    max-width:1400px; 
-    margin:0 auto;
-    display:flex;
-    justify-content:center;
-  }
-  #LeMenu > a { 
-    padding:10px 20px; 
-    margin:0 2px;
-    text-decoration:none;
-    font: 1em Arial, Helvetica, sans-serif;
-    text-transform:uppercase; /* en majuscules */
-    border-radius:30px;
-    text-align:center;
+#LeMenu {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
 
-  }
-  #LeMenu > a:hover {	
-    background:#242323; 
-    color: #f8f9fa;	
-  }
-  
-  /* bouton menu burger */
-  #CmdMenu { 
-    position :fixed; 
-    top :10px; 
-    right :10px; 
-    z-index :50;
-    padding:5px 8px; 
-    color:rgb(249, 247, 247);
+#LeMenu>a {
+    padding: 10px 20px;
+    margin: 0 2px;
+    text-decoration: none;
+    font: 1em Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    border-radius: 30px;
+    text-align: center;
+
+}
+
+#LeMenu>a:hover {
+    background: #242323;
+    color: #f8f9fa;
+}
+
+/* bouton menu burger */
+#CmdMenu {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 50;
+    padding: 5px 8px;
+    color: rgb(249, 247, 247);
     background: #66676a;
-    border-radius:5px;
-    cursor:pointer;
-  }
-  #CmdMenu:hover {	
-    background:#242323; 
-    color: #f8f9fa;	
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#CmdMenu:hover {
+    background: #242323;
+    color: #f8f9fa;
     border: solid 1px #0f1011;
-  }
-  
-  #LeMenu {
-    flex-direction:column;
-  }
-  #CmdMenu { 
-    display:block;
-  }
+}
+
+#LeMenu {
+    flex-direction: column;
+}
+
+#CmdMenu {
+    display: block;
+}
 
 /* Fin de menu */
-  
-p{
+
+.presentation {
+    background-color: #535456;
+    padding: 1em;
     margin: 1em;
+    border-radius: 10px;
+    max-width: 075%;
+    margin: auto;
+    box-shadow: 2px 2px 4px rgba(10, 10, 10, 0.5);
+    ;
+
 }
-h1,h2{
+
+h1,
+h2,
+h3 {
     margin: 1rem;
 }
+
 a {
     color: inherit;
     text-decoration: none;
 }
-.tags{
+
+.tags {
     display: flex;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 
 }
-button{
-    margin: 0.5rem;
-    padding: 8px !important;
+
+.tagPresentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    background-color: antiquewhite;
+    margin: 8px;
+    padding: 8px;
     white-space: nowrap;
     border-radius: 10px;
     border: none;
 }
 
+button:hover {
+    background-color: rgb(129, 121, 111);
+    color: aliceblue;
+}
+
 .lastPicture {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
+
 .card {
-    width: 50%; 
+    width: 46%;
+    margin: 4px;
+    border-radius: 20px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 1; 
-    overflow: hidden;    
+    aspect-ratio: 1;
+    overflow: hidden;
 }
 
-img.picture {
+a img.picture {
     max-height: 100%;
     width: fit-content;
     object-fit: cover;
     transition: transform 0.3s ease-in-out;
 }
 
-img.picture:hover {
-    transform: scale(0.8); 
+a img.picture:hover {
+    transform: scale(0.5);
 }
-.title p {
+
+div.lastPicture div.card a div.title p {
+    width: 100%;
     display: block;
     position: absolute;
     bottom: 0;
@@ -126,7 +174,6 @@ img.picture:hover {
     align-items: center;
     text-align: center;
     padding: 20px;
-    max-width: 800px;
     margin: auto;
 }
 
@@ -134,13 +181,9 @@ img.picture:hover {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.artwork-container img:hover {
-    transform: scale(1.05);
-}
 
 .artwork-title {
     font-size: 2em;
@@ -156,6 +199,76 @@ img.picture:hover {
     font-size: 1.2em;
     line-height: 1.6;
 }
+
+.pastille{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+
+    
+}
+div.pastille a{
+    width: 40%;
+    margin: 10px;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1.5;
+    overflow: hidden;
+}
+.pastille-content img {
+    max-height: 100%;
+    width: fit-content;
+    object-fit: cover;
+}
+.pastille-content div.title  {
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0%;
+    margin-right: 15px;
+    padding:  0.5rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: x-large;
+    text-align: center;
+
+}
+.pagination {
+
+    display: inline-block;
+    padding-bottom: 10;
+    margin: 10px;
+    list-style: none;
+}
+
+.pagination li {
+    display: inline;
+}
+
+.pagination li a {
+    color: antiquewhite;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.pagination li a:hover {
+    border-radius: 100%;
+    background-color: #303132;
+    color: #fff;
+}
+li.page-item.active{
+    padding: 10px;
+    font-size: large;
+    background-color: #303132;
+}
+
 
 @media (max-width: 600px) {
 
@@ -176,31 +289,53 @@ img.picture:hover {
 
 @media (min-width: 768px) {
     #LeMenu {
-        flex-direction:row;
-        /*flex-wrap:wrap;*/
-      }
-      #LeMenu > a {
-        display:flex;
-        align-items:center;
-        /*flex-wrap:wrap;*/
-      }
-      #CmdMenu { 
-        display:none;
-      }
-      #LeMenu > a { 
-        padding:5px 10px; 
-        margin:0 2px;
-      }
-    .card {
-        max-width: 33%;
+        flex-direction: row;
     }
+
+    #LeMenu>a {
+        display: flex;
+        align-items: center;
+    }
+
+    div.navigation {
+        display: flex;
+        justify-content: space-around;
+    
+    }
+        #LeMenu>a {
+        padding: 5px 10px;
+        margin: 0 2px;
+    }
+
+    .card {
+        max-width: 32%;
+    }
+
     .title p {
         font-size: medium;
+    }
+    div.pastille a{
+        width: 30%;
     }
 }
 
 @media (min-width: 1024px) {
-    .card {
-        max-width: 25%;
+    body {
+        max-width: 80%;
     }
+
+    p {
+        max-width: 80%;
+
+    }
+
+    .card {
+        margin: 10px;
+        max-width: 23%;
+    }
+    div.pastille a{
+        width: 22%;
+        margin: 20px;
+    }
+
 }

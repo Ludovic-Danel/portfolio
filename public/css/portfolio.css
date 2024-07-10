@@ -2,7 +2,8 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    font: 1em Arial, Helvetica, sans-serif;
+
 
     height: 100%;
     min-height: 100vh;
@@ -20,8 +21,9 @@ header {
 /* MENU */
 
 #LeMenu {
+    padding: 1em;
     max-width: 1400px;
-    margin: 0 auto;
+    margin:  auto;
     display: flex;
     justify-content: center;
 }
@@ -83,10 +85,11 @@ header {
 
 }
 
-h1,
+
 h2,
 h3 {
-    margin: 1rem;
+    margin: auto;
+    
 }
 
 a {
@@ -176,18 +179,58 @@ div.lastPicture div.card a div.title p {
     padding: 20px;
     margin: auto;
 }
-
 .artwork-container img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
+.overlay {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
 
+.overlay-content {
+    max-width: 80%;
+    max-height: 80%;
+    transition: transform 0.3s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.show {
+    display: flex;
+    opacity: 1;
+}
+
+.zoomed {
+    transform: scale(1.2);
+}
 .artwork-title {
     font-size: 2em;
-    margin-bottom: 10px;
+    margin:auto;
+    padding: 1em;
 }
 
 .artwork-date {
@@ -268,7 +311,10 @@ li.page-item.active{
     font-size: large;
     background-color: #303132;
 }
-
+footer{
+    display: flex;
+    justify-content: center;
+}
 
 @media (max-width: 600px) {
 
@@ -299,7 +345,7 @@ li.page-item.active{
 
     div.navigation {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     
     }
         #LeMenu>a {
@@ -323,10 +369,29 @@ li.page-item.active{
     body {
         max-width: 80%;
     }
+    .artwork-container{
+        margin: auto;
+        flex-direction: row;
+        justify-content: center
+    }
+    .artwork-content{
+        background-color: rgba(42, 41, 41, 0.5);
+        height: 500px;
+        margin: 1em;
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+    .artwork-container img{
+        margin: 1em;
+        max-height: 500px;
 
-    p {
-        max-width: 80%;
+    }
 
+    .artwork-title{
+        margin: 0%;
+        padding: 0%;
     }
 
     .card {
@@ -335,7 +400,8 @@ li.page-item.active{
     }
     div.pastille a{
         width: 22%;
-        margin: 20px;
+        margin: 15px;
+        aspect-ratio: 3;
     }
 
 }

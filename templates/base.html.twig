@@ -29,23 +29,29 @@
 	</head>
 	<body>
 		<header>
-			<a href="{{ path('app_main' )}}">
-				<h1>Digital Artist</h1>
-			</a>
 			  <div id="CmdMenu" title="Afficher/Masquer le Menu">&#9776;</div>
+			  <nav id="LeMenu">
+				<a href="{{ path('app_main' )}}">Accueil</a>
+				<a href="{{ path('app_category' )}}">Catégories</a>
+				<a href="{{ path('app_artworks' )}}">Gallerie</a>
+				<a href="#">À Propos de Moi</a>
+			  </nav>
+	
 		</header>
-		<nav id="LeMenu">
-			<a href="{{ path('app_main' )}}">Accueil</a>
-			<a href="{{ path('app_category' )}}">Catégories</a>
-			<a href="{{ path('app_artworks' )}}">Gallerie</a>
-			<a href="#">À Propos de Moi</a>
-		  </nav>
+		  <a href="{{ path('app_main' )}}">
+			<h1>Digital Artist</h1>
+		</a>
 
 		{% block body %}
+
 			
 		{% endblock %}
 		<script src="{{ asset('js/toggleMenu.js') }}"></script>
 		<script src="{{ asset('js/carousel.js') }}"></script>
+		<script src="{{ asset('js/zoomPicture.js') }}"></script>
 
 	</body>
+	<footer>
+		<p>Design par Ludovic Danel  <span class="cadenas"> <a href="#">&#x1F512;</span></a> </p>
+ 	</footer>
 </html>

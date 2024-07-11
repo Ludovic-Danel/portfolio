@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Front;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,10 +10,10 @@ use App\Repository\TagRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class MainController extends AbstractController
+class FrontController extends AbstractController
 {
     /**
-     * @Route("/", name="app_main")
+     * @Route("/", name="app_front")
      */
     public function index(ArtworkRepository $ArtworkRepository, TagRepository $TagRepository): Response
     {
@@ -21,7 +21,7 @@ class MainController extends AbstractController
 
         $allTags = $TagRepository->findAll();
 
-        return $this->render('main/index.html.twig', [
+        return $this->render('front/index.html.twig', [
            'artworks' => $allArtwork,
            'tags' => $allTags
         ]);
@@ -38,7 +38,7 @@ class MainController extends AbstractController
             throw $this->createNotFoundException("cet artwork n'existe pas");
         }
 
-        return $this->render('main/show.html.twig', [
+        return $this->render('front/show.html.twig', [
             'artwork' => $Artwork,
          ]);
 
@@ -54,7 +54,7 @@ class MainController extends AbstractController
 
         $Artworks = $TagRepository->findArtworksByTagId($id);
 
-        return $this->render('main/tag.html.twig', [
+        return $this->render('front/tag.html.twig', [
             'tag' => $tag,
             'artworkTags' => $Artworks
          ]);
@@ -70,7 +70,7 @@ class MainController extends AbstractController
     {
         $allTags = $TagRepository->findAll();
 
-        return $this->render('main/category.html.twig', [
+        return $this->render('front/category.html.twig', [
                 'tags' => $allTags,
              ]);
 
@@ -94,7 +94,7 @@ class MainController extends AbstractController
             10 // nombre d'éléments par page
         );
 
-        return $this->render('main/artworks.html.twig', [
+        return $this->render('front/artworks.html.twig', [
             'pagination' => $pagination,
         ]);
     }

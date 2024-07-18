@@ -8,24 +8,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Picture</th>
-                <th>CreatedAt</th>
-                <th>DrawingCreatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for artwork in artworks %}
             <tr>
-                <td>{{ artwork.id }}</td>
                 <td>{{ artwork.title }}</td>
-                <td>{{ artwork.description }}</td>
                 <td>{{ artwork.picture }}</td>
-                <td>{{ artwork.createdAt ? artwork.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ artwork.drawingCreatedAt ? artwork.drawingCreatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">show</a>
                     <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">edit</a>

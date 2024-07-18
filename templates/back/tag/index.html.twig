@@ -5,10 +5,11 @@
 {% block body %}
     <h1>Tag index</h1>
 
+    <a href="{{ path('app_back_tag_new') }}"><button>Create new</button></a>
+
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>actions</th>
@@ -17,7 +18,6 @@
         <tbody>
         {% for tag in tags %}
             <tr>
-                <td>{{ tag.id }}</td>
                 <td>{{ tag.name }}</td>
                 <td>{{ tag.description }}</td>
                 <td>
@@ -33,5 +33,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_tag_new') }}">Create new</a>
 {% endblock %}

@@ -2,6 +2,7 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     font: 1em Arial, Helvetica, sans-serif;
 
 
@@ -241,6 +242,7 @@ div.lastPicture div.card a div.title p {
 .artwork-description {
     font-size: 1.2em;
     line-height: 1.6;
+    padding: 10px;
 }
 
 .pastille{

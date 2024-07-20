@@ -1,27 +1,25 @@
 /* Styles pour le tableau */
 .table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 20px auto;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
     background-color: rgb(50,51,52);
     color:antiquewhite;
 }
-
 .table th, .table td {
-    padding: 12px 15px;
+    padding: 10px; 
 }
-
 .table thead tr {
     background-color: #767677;
     color: antiquewhite;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 }
-
 .table tbody tr {
+    padding: 10px;
     border-bottom: 1px solid #dddddd;
+    
 }
 
 .table tbody tr:nth-of-type(even) {
@@ -54,11 +52,12 @@
 
 /* Style pour le bouton de création */
 a.button {
+    text-align: center;
     display: inline-block;
     padding: 10px 20px;
     font-size: 18px;
     color: antiquewhite;
-    background-color: #0d0743;
+    background-color: #009879;
     border-radius: 5px;
     text-decoration: none;
     margin-top: 20px;
@@ -152,4 +151,19 @@ input{
 }
 #artwork_drawingCreatedAt{
     width: 150px;
+}
+.form-button{
+    display: flex;
+    flex-direction: column;
+}
+.miniature-image{
+    max-width: 150px;
+    height: auto;
+}
+
+.back-button{
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    font-size: x-large;
 }

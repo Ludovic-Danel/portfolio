@@ -89,7 +89,7 @@ header {
 
 h2,
 h3 {
-    margin: auto;
+    margin: 20px auto;
     
 }
 
@@ -115,9 +115,10 @@ a {
 }
 
 button {
-    background-color: antiquewhite;
+    color: antiquewhite;
+    background-color:#007f63;
     margin: 8px;
-    padding: 8px;
+    padding: 10px;
     white-space: nowrap;
     border-radius: 10px;
     border: none;

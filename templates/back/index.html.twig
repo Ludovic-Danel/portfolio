@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Back office{% endblock %}
+
+{% block body %}
+
+<h2>Bienvenue dans le backOffice</h2>
+
+<h3> Tu veux gerer:</h3>
+<div class="back-button">
+<button><a href="{{path('app_back_artwork_index')}}"> Les Artwork</a></button>
+<button> <a href="{{path('app_back_tag_index')}}">Les Tag</a></button>
+</div>
+
+{% endblock %}

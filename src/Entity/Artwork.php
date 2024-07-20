@@ -6,6 +6,7 @@ use App\Repository\ArtworkRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArtworkRepository::class)
@@ -52,6 +53,7 @@ class Artwork
     public function __construct()
     {
         $this->tag = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
 

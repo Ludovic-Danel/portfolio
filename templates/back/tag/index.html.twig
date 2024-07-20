@@ -5,14 +5,14 @@
 {% block body %}
     <h1>Tag index</h1>
 
-    <a href="{{ path('app_back_tag_new') }}"><button>Create new</button></a>
+    <a href="{{ path('app_back_tag_new') }}"><button class="back-button">Nouveau Tag</button></a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +20,9 @@
             <tr>
                 <td>{{ tag.name }}</td>
                 <td>{{ tag.description }}</td>
-                <td>
-                    <a href="{{ path('app_back_tag_show', {'id': tag.id}) }}">show</a>
-                    <a href="{{ path('app_back_tag_edit', {'id': tag.id}) }}">edit</a>
+                <td class="form-button" >
+                   <button> <a href="{{ path('app_back_tag_show', {'id': tag.id}) }}">Détails</a> </button>
+                  <button>  <a href="{{ path('app_back_tag_edit', {'id': tag.id}) }}">Modifier</a> </button>
                 </td>
             </tr>
         {% else %}

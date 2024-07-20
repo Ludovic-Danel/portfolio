@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ArtworkType extends AbstractType
 {
@@ -18,8 +19,11 @@ class ArtworkType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('picture')
-            ->add('drawingCreatedAt', DateType::class, [
+            ->add('picture', FileType::class, [
+                'label' => 'Picture (Image file)',
+                'mapped' => false,  // Ce champ n'est pas mappé directement à l'entité Artwork
+                'required' => false,
+            ])            ->add('drawingCreatedAt', DateType::class, [
                 'widget' => 'single_text', // Permet d'afficher un calendrier de sélection de date
                 'html5' => true, // Utilise le widget HTML5 si disponible
             ])            ->add('tag', EntityType::class, [

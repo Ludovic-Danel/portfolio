@@ -5,22 +5,24 @@
 {% block body %}
     <h1>Artwork index</h1>
 
+    <a href="{{ path('app_back_artwork_new') }}"><button class="back-button">Nouveau Dessin</button></a>
+
     <table class="table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Picture</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Image   </th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for artwork in artworks %}
             <tr>
                 <td>{{ artwork.title }}</td>
-                <td>{{ artwork.picture }}</td>
-                <td>
-                    <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">show</a>
-                    <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">edit</a>
+                <td><img class="miniature-image" src="{{artwork.picture }}" </td>
+                <td class="form-button">
+                   <button> <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">Détails</a></button>
+                   <button> <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">Modifier</a></button>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_artwork_new') }}">Create new</a>
 {% endblock %}

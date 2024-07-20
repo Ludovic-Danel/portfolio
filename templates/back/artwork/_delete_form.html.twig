@@ -1,8 +1,9 @@
-<form method="post" action="{{ path('app_back_artwork_delete', {'id': artwork.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form class="form-button" method="post" action="{{ path('app_back_artwork_delete', {'id': artwork.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet artwork ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ artwork.id) }}">
-    <button class="btn">Delete</button>
-    <button><a href="{{ path('app_back_artwork_index') }}">back to list</a></button>
+    <button type="submit" class="btn">Supprimer</button>
+    <a class="button" href="{{ path('app_back_artwork_index') }}" class="btn">Retour à la liste</a>
     {% if app.request.attributes.get('_route') != 'app_back_artwork_edit' %}
-        <button> <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">edit</a> </button>
+        <a  class="button" href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}" class="btn">Modifier</a>
     {% endif %}
 </form>
+

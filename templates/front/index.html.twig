@@ -11,13 +11,13 @@
         <div class="carousel-inner">
                 {% for artwork in artworks %}
                     <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <img src="{{ artwork.picture }}" alt="Image {{ loop.index }}">
+                        <img src="data:image/jpeg;base64,{{ artwork.picture }}" alt="Image {{ loop.index }}">
                             <a class="voir" href="{{ path('app_show', {'id': artwork.id}) }}">Ouvrir</a>
                     </div>
                 {% endfor %}
     </div>
-        <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
+        <button class="carousel-control prev" onclick="prevSlide()">&#10095;</button>
+        <button class="carousel-control next" onclick="nextSlide()">&#10094;</button>
   </div>
 
 

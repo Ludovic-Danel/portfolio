@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Artwork{% endblock %}
+{% block title %}New Artwork
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Artwork</h1>
+	<h1>Create new Artwork</h1>
 
-    {{ include('back/artwork/_form.html.twig') }}
+	{{ include('back/artwork/_form.html.twig') }}
 
-   <a class="button"href="{{ path('app_back_artwork_index') }}">back to list</a>
+	<div id="form2-container" class="hidden">
+		{{ include('back/tag/_form2.html.twig') }}
+	</div>
+    
+	<a class="button" href="{{ path('app_back_artwork_index') }}">back to list</a>
 {% endblock %}

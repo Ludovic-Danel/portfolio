@@ -1,18 +1,23 @@
 {{ form_start(form) }}
+<div >
+    <label>Tags</label>
+    <div class="tag-selection">
+        {% for tag in form.tag %}
+            <div class="checkbox-label">
+                {{ form_widget(tag) }}
+                {{ form_label(tag) }}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" id="pop-up">Nouveau Tag</button>
+
     {{ form_row(form.title) }}
     {{ form_row(form.description) }}
     {{ form_row(form.picture) }}
     {{ form_row(form.drawingCreatedAt) }}
-    <div >
-        <label>Tags</label>
-        <div class="tag-selection">
-            {% for tag in form.tag %}
-                <div class="checkbox-label">
-                    {{ form_widget(tag) }}
-                    {{ form_label(tag) }}
-                </div>
-            {% endfor %}
+        
         </div>
-    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
+
+
 {{ form_end(form) }}

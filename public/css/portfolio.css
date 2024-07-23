@@ -8,7 +8,7 @@ body {
 
     height: 100%;
     min-height: 100vh;
-    background: linear-gradient(165deg, rgb(51, 51, 52), rgb(5, 5, 5), rgb(51, 51, 52));
+    background: linear-gradient(165deg, rgb(76, 76, 77), rgb(5, 5, 5), rgb(51, 51, 52));
     color: antiquewhite;
     margin: auto;
 }
@@ -22,7 +22,7 @@ header {
 /* MENU */
 
 #LeMenu {
-    padding: 1em;
+    padding-top: 70px;
     max-width: 1400px;
     margin:  auto;
     display: flex;
@@ -71,7 +71,11 @@ header {
 #CmdMenu {
     display: block;
 }
-
+#logo{
+    position: absolute;
+    top: 0%;
+    margin: 20px;
+}
 /* Fin de menu */
 
 .presentation {
@@ -90,7 +94,7 @@ header {
 h2,
 h3 {
     margin: 20px auto;
-    
+    padding: 20px;
 }
 
 a {
@@ -148,14 +152,9 @@ button:hover {
 }
 
 a img.picture {
-    max-height: 100%;
-    width: fit-content;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-}
-
-a img.picture:hover {
-    transform: scale(0.5);
+    width: 100%;  
+    height: auto;  
+    object-fit: cover;  
 }
 
 div.lastPicture div.card a div.title p {
@@ -265,11 +264,12 @@ div.pastille a{
     aspect-ratio: 1.5;
     overflow: hidden;
 }
-.pastille-content img {
-    max-height: 100%;
-    width: fit-content;
+.pastille-content img.picture {
+    width: 100%; 
+    height: auto; 
     object-fit: cover;
 }
+
 .pastille-content div.title  {
     width: 100%;
     display: block;
@@ -372,6 +372,9 @@ footer{
     body {
         max-width: 80%;
     }
+    #LeMenu {
+        padding-top: 30px;
+    }
     .artwork-container{
         margin: auto;
         flex-direction: row;
@@ -394,8 +397,8 @@ footer{
 
     .artwork-title{
         margin: 0%;
-        padding: 0%;
-    }
+        padding:100px 100px;
+       }
 
     .card {
         margin: 10px;

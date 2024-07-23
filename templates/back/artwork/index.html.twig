@@ -19,7 +19,7 @@
         {% for artwork in artworks %}
             <tr>
                 <td>{{ artwork.title }}</td>
-                <td><img class="miniature-image" src="{{artwork.picture }}" </td>
+                <td><img class="miniature-image" src="data:image/jpeg;base64,{{artwork.pictureMin }}" </td>
                 <td class="form-button">
                    <button> <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">Détails</a></button>
                    <button> <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">Modifier</a></button>

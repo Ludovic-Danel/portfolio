@@ -167,3 +167,26 @@ input{
     margin: 10px auto;
     font-size: x-large;
 }
+
+
+.hidden {
+    display: none;
+}
+
+#form2-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(50,51,52);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+}

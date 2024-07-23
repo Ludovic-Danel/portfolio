@@ -26,7 +26,8 @@ class ArtworkType extends AbstractType
             ])            ->add('drawingCreatedAt', DateType::class, [
                 'widget' => 'single_text', // Permet d'afficher un calendrier de sélection de date
                 'html5' => true, // Utilise le widget HTML5 si disponible
-            ])            ->add('tag', EntityType::class, [
+            ])
+            ->add('tag', EntityType::class, [
                 "multiple" => true,
                 "expanded" => true, // radiobutton
                 "class" => Tag::class,

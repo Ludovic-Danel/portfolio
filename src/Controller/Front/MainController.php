@@ -10,7 +10,7 @@ use App\Repository\TagRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class FrontController extends AbstractController
+class MainController extends AbstractController
 {
     /**
      * @Route("/", name="app_front")

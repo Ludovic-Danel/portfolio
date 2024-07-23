@@ -9,7 +9,7 @@
 
     {% for artworkTag in artworkTags %}
         <div class="card">
-                <a href="{{ path('app_show', {'id': artworkTag.id}) }}"><img class="picture" src="{{ artworkTag.picture }}" alt="{{ artworkTag.title }}">   
+                <a href="{{ path('app_show', {'id': artworkTag.id}) }}"><img class="picture" src="data:image/jpeg;base64,{{ artworkTag.pictureMin }}" alt="{{ artworkTag.title }}">   
                 
 
                     <div class="title">

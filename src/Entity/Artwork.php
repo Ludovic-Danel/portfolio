@@ -31,7 +31,7 @@ class Artwork
     private $description;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $picture;
 
@@ -49,6 +49,11 @@ class Artwork
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="artworks")
      */
     private $tag;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $pictureMin;
 
     public function __construct()
     {
@@ -142,6 +147,18 @@ class Artwork
     public function removeTag(Tag $tag): self
     {
         $this->tag->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getPictureMin(): ?string
+    {
+        return $this->pictureMin;
+    }
+
+    public function setPictureMin(?string $pictureMin): self
+    {
+        $this->pictureMin = $pictureMin;
 
         return $this;
     }

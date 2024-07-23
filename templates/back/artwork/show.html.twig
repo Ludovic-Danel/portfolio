@@ -17,11 +17,11 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>im{{ artwork.description }}</td>
+                <td>{{ artwork.description }}</td>
             </tr>
             <tr>
                 <th>Picture</th>
-                <td><img class="miniature-image" src="{{artwork.picture }}" </td>
+                <td> <img class="miniature-image" src="data:image/jpeg;base64,{{ artwork.pictureMin }}" alt="{{ artwork.title }}"                </td>
             </tr>
             <tr>
                 <th>CreatedAt</th>

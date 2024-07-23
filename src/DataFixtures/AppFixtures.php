@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Tag;
 use App\Entity\Artwork;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
@@ -13,7 +14,7 @@ class AppFixtures extends Fixture
     {
 
 
-        $faker = \Faker\Factory::create();
+/*         $faker = \Faker\Factory::create();
 
         // je crée mes tags
         $tags = ["Portrait", "Science-fiction", "Jeux-video", "Femme", "Manga", "Paysage", "Personnage", "Fantasy", "Animal", "Fantastique", "Abstrait", "Erotique", "Humoristique", "Bande-dessinée", "Crayon", "Western"];
@@ -74,14 +75,22 @@ class AppFixtures extends Fixture
             $manager->persist($newArtwork);
 
             $allArtwork[] = $newArtwork;
-        }
+        } */
 
 
+        $managerUser = new User();
+        $managerUser->setEmail("admin@admin.com");
+        // * on donne le mot de passe hashé
+        // mdp : admin
+        $managerUser->setPassword('$2y$13$H7rQGO0iWi.w43ehBnzVXOk9/E4YumvBbifVG/c0g7onLOVVJuERO');
+        $managerUser->setRoles(['ROLE_ADMIN']);
 
-
+        $manager->persist($managerUser);
 
         $manager->flush();
     }
+
+
     /**
      * Sélectionne un nombre aléatoire de tags parmi une liste de tags donnée.
      *
@@ -89,9 +98,13 @@ class AppFixtures extends Fixture
      * @param int $count Nombre de tags à sélectionner
      * @return array Tableau de tags sélectionnés
      */
-    private function getRandomTags(array $tags, int $count): array
+/*     private function getRandomTags(array $tags, int $count): array
     {
         shuffle($tags); // Mélange les tags
         return array_slice($tags, 0, $count); // Sélectionne les premiers $count tags mélangés
-    }
-}
+ */
+
+
+  } 
+
+

@@ -181,8 +181,9 @@ div.lastPicture div.card a div.title p {
     margin: auto;
 }
 .artwork-container img {
+    margin-top: 10px;
     max-width: 100%;
-    height: auto;
+    max-height: 400px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;

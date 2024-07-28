@@ -1,4 +1,12 @@
 /* MOBILE FIRST */
+@font-face {
+    font-family: 'Ballmain';
+    src: url('/fonts/Ballmain.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
     display: flex;
     flex-direction: column;
@@ -22,7 +30,7 @@ header {
 /* MENU */
 
 #LeMenu {
-    padding-top: 70px;
+    padding-top: 120px;
     max-width: 1400px;
     margin:  auto;
     display: flex;
@@ -75,6 +83,8 @@ header {
     position: absolute;
     top: 0%;
     margin: 20px;
+    font-family: 'Ballmain' , sans-serif;
+    letter-spacing: 2px
 }
 /* Fin de menu */
 
@@ -91,9 +101,11 @@ header {
 }
 
 
-h2,
+h2{
+    margin-top: 70px ;
+    padding: 1em;
+}
 h3 {
-    margin: 20px auto;
     padding: 20px;
 }
 
@@ -140,6 +152,7 @@ button:hover {
 }
 
 .card {
+    background-color: black;
     width: 46%;
     margin: 4px;
     border-radius: 20px;
@@ -150,11 +163,11 @@ button:hover {
     aspect-ratio: 1;
     overflow: hidden;
 }
-
-a img.picture {
-    width: 100%;  
-    height: auto;  
-    object-fit: cover;  
+div.card a{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 div.lastPicture div.card a div.title p {
@@ -178,7 +191,7 @@ div.lastPicture div.card a div.title p {
     align-items: center;
     text-align: center;
     padding: 20px;
-    margin: auto;
+    margin-top: 70px;
 }
 .artwork-container img {
     margin-top: 10px;
@@ -287,18 +300,29 @@ div.pastille a{
     text-align: center;
 
 }
+div.navigation {
+    display: flex;
+    justify-content: center;
+    margin: auto
+
+}
+
 .pagination {
 
     display: inline-block;
     padding-bottom: 10;
-    margin: 10px;
+    margin: auto;
     list-style: none;
 }
 
 .pagination li {
     display: inline;
 }
+ul.pagination{
+    padding-left: 0;
+    padding-top: 10px;
 
+}
 .pagination li a {
     color: antiquewhite;
     text-decoration: none;
@@ -319,7 +343,9 @@ footer{
     display: flex;
     justify-content: center;
 }
-
+.error-page{
+    margin: auto;
+}
 @media (max-width: 600px) {
 
 
@@ -347,11 +373,6 @@ footer{
         align-items: center;
     }
 
-    div.navigation {
-        display: flex;
-        justify-content: center;
-    
-    }
         #LeMenu>a {
         padding: 5px 10px;
         margin: 0 2px;
@@ -395,7 +416,6 @@ footer{
         max-height: 500px;
 
     }
-
     .artwork-title{
         margin: 0%;
         padding:100px 100px;
@@ -403,7 +423,7 @@ footer{
 
     .card {
         margin: 10px;
-        max-width: 23%;
+        width: 23%;
     }
     div.pastille a{
         width: 22%;

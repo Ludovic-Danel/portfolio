@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+	{% block title %}
+		Page non trouvée - Erreur 404
+	{% endblock %}
+	
+	{% block body %}
+		<div class="error-page">
+			<h1>404 - Page non trouvée</h1>
+			<p>Oups! Il semble que la page que vous recherchez n'existe pas.</p>
+			<p>
+				Peut-être souhaitez-vous retourner à la <a href="{{ path('app_front' )}}">page d'accueil</a> ?
+			</p>
+			<div class="error-details">
+				<p>Si vous avez tapé l'URL manuellement, vérifiez l'orthographe et essayez à nouveau.</p>
+				<p>Sinon, voici quelques liens utiles :</p>
+				<ul>
+					<button><a href="{{ path('app_category' )}}">Catégories</a></button>
+					<button><a href="{{ path('app_artworks' )}}">Galerie</a></button>
+				</ul>
+			</div>
+		</div>
+	{% endblock %}
+	

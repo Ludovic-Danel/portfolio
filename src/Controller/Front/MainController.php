@@ -35,7 +35,7 @@ class MainController extends AbstractController
         $Artwork = $ArtworkRepository->find($id);
         // ! si l'artwork  n'existe pas : 404
         if ($Artwork === null) {
-            throw $this->createNotFoundException("cet artwork n'existe pas");
+            throw $this->createNotFoundException("Ce dessin n'existe pas");
         }
 
         return $this->render('front/show.html.twig', [
@@ -91,11 +91,31 @@ class MainController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1), // numéro de la page en cours
-            10 // nombre d'éléments par page
+            6 // nombre d'éléments par page
         );
-
+        if ($request->isXmlHttpRequest()) {
+            // Si la requête est une requête AJAX, renvoyez uniquement le contenu nécessaire
+            return $this->render('partials/artworks.html.twig', [
+                'pagination' => $pagination,
+            ]);
+        }
         return $this->render('front/artworks.html.twig', [
             'pagination' => $pagination,
         ]);
     }
+
+     /**
+     * @route("/about", name="app_about")
+     *
+     * 
+     * @return Response
+     */
+    public function about(): Response
+    {
+
+        return $this->render('front/about.html.twig', [
+             ]);
+
+    }
+
 }

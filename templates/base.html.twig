@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,17 +34,19 @@
 				<a href="{{ path('app_front' )}}">Accueil</a>
 				<a href="{{ path('app_category' )}}">Catégories</a>
 				<a href="{{ path('app_artworks' )}}">Galerie</a>
-				<a href="#">À Propos de Moi</a>
+				<a href="{{ path('app_about' )}}">À Propos de Moi</a>
 			</nav>
 
 		</header>
 		<h1>
 			<a id="logo" href="{{ path('app_front' )}}">
-				Digital Artist
+				Marc Broquet <br>Illustration & Concept
 			</a>
 		</h1>
-
+		
 		{% block body %}{% endblock %}
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="{{ asset('js/pagination.js') }}"></script>
 		<script src="{{ asset('js/toggleMenu.js') }}"></script>
 		<script src="{{ asset('js/carousel.js') }}"></script>
 		<script src="{{ asset('js/popUp.js') }}"></script>

@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Symfony\Component\Mime\MimeTypes;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/back/artwork")
@@ -27,10 +28,26 @@ class ArtworkController extends AbstractController
     /**
      * @Route("/", name="app_back_artwork_index", methods={"GET"})
      */
-    public function index(ArtworkRepository $artworkRepository): Response
+    public function index(ArtworkRepository $artworkRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $queryBuilder = $artworkRepository->createQueryBuilder('a')
+        ->orderBy('a.drawingCreatedAt', 'DESC');
+
+        $pagination = $paginator->paginate(
+            $queryBuilder->getQuery(),
+            $request->query->getInt('page', 1), // numéro de la page en cours
+            6 // nombre d'éléments par page
+        );
+        if ($request->isXmlHttpRequest()) {
+            // Si la requête est une requête AJAX, renvoyez uniquement le contenu nécessaire
+            return $this->render('partials/artworksIndex.html.twig', [
+                'pagination' => $pagination,
+            ]);
+        }
+
+
         return $this->render('back/artwork/index.html.twig', [
-            'artworks' => $artworkRepository->findAll(),
+            'pagination' => $pagination,
         ]);
     }
 
@@ -48,39 +65,45 @@ class ArtworkController extends AbstractController
             $pictureFile = $form->get('picture')->getData();
 
             if ($pictureFile) {
-                // Lire le fichier et le convertir en base64
-                $pictureData = base64_encode(file_get_contents($pictureFile->getPathname()));
-                $artwork->setPicture($pictureData);
-
-                // Réduire la taille de l'image tout en conservant le ratio d'aspect
+                // Initialiser Imagine
                 $imagine = new Imagine();
                 $image = $imagine->open($pictureFile->getPathname());
-                $size = $image->getSize();
 
-                $width = 300;
+                // Déterminer l'extension du fichier en utilisant MimeTypes
+                $mimeTypes = new MimeTypes();
+                $extension = 'webp'; // Convertir en WebP
+
+                // Sauvegarder l'image en WebP avec une qualité réduite à 75%
+                $tempPath = sys_get_temp_dir() . '/' . uniqid() . '.' . $extension;
+                $options = ['webp_quality' => 75]; // Réduire la qualité à 75%
+                $image->save($tempPath, $options);
+
+                // Lire le fichier converti et le convertir en base64
+                $pictureData = base64_encode(file_get_contents($tempPath));
+                $artwork->setPicture($pictureData);
+
+                // Redimensionner l'image à une largeur de 500 pixels tout en conservant le ratio d'aspect
+                $size = $image->getSize();
+                $width = 500;
                 $height = (int) ($size->getHeight() * ($width / $size->getWidth()));
                 $box = new Box($width, $height);
 
                 $image->resize($box);
 
-                // Déterminer l'extension du fichier en utilisant MimeTypes
-                $mimeTypes = new MimeTypes();
-                $extension = $mimeTypes->getExtensions($pictureFile->getMimeType())[0] ?? 'jpeg';
-
-                // Sauvegarder l'image avec l'extension correcte
-                $tempPath = sys_get_temp_dir() . '/' . uniqid() . '.' . $extension;
-                $image->save($tempPath);
+                // Sauvegarder l'image redimensionnée avec l'extension WebP
+                $tempPathMin = sys_get_temp_dir() . '/' . uniqid() . '.' . $extension;
+                $image->save($tempPathMin, $options);
 
                 // Lire le fichier redimensionné et le convertir en base64
-                $pictureMinData = base64_encode(file_get_contents($tempPath));
+                $pictureMinData = base64_encode(file_get_contents($tempPathMin));
                 $artwork->setPictureMin($pictureMinData);
 
-                // Supprimer le fichier temporaire
+                // Supprimer les fichiers temporaires
                 unlink($tempPath);
+                unlink($tempPathMin);
             }
 
             $artworkRepository->add($artwork, true);
-
             return $this->redirectToRoute('app_back_artwork_index', [], Response::HTTP_SEE_OTHER);
         }
         $tag = new Tag();
@@ -113,7 +136,7 @@ class ArtworkController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_back_artwork_edit", methods={"GET", "POST"})
      */
-    public function edit($id,Request $request,TagRepository $tagRepository, Artwork $artwork, ArtworkRepository $artworkRepository): Response
+    public function edit($id, Request $request, TagRepository $tagRepository, Artwork $artwork, ArtworkRepository $artworkRepository): Response
     {
         $form = $this->createForm(ArtworkType::class, $artwork);
         $form->handleRequest($request);

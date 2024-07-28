@@ -6,31 +6,36 @@
     <h2>Artwork index</h2>
 
     <a href="{{ path('app_back_artwork_new') }}"><button class="back-button">Nouveau Dessin</button></a>
+    <div id="response-Ajax">
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Image   </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artwork in artworks %}
-            <tr>
-                <td>{{ artwork.title }}</td>
-                <td><img class="miniature-image" src="data:image/jpeg;base64,{{artwork.pictureMin }}" </td>
-                <td class="form-button">
-                   <button> <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">Détails</a></button>
-                   <button> <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">Modifier</a></button>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Image   </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for artwork in pagination.items %}
+                <tr>
+                    <td>{{ artwork.title }}</td>
+                    <td><img class="miniature-image" src="data:image/jpeg;base64,{{artwork.pictureMin }}" </td>
+                    <td class="form-button">
+                    <button> <a href="{{ path('app_back_artwork_show', {'id': artwork.id}) }}">Détails</a></button>
+                    <button> <a href="{{ path('app_back_artwork_edit', {'id': artwork.id}) }}">Modifier</a></button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Pas encore de dessin</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 {% endblock %}

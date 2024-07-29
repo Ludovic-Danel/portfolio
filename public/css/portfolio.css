@@ -104,7 +104,7 @@ header {
 
 
 h2 {
-    margin-top: 70px;
+    margin: 70px auto 20px auto;
     padding: 1em;
 }
 
@@ -373,8 +373,50 @@ footer {
     margin: auto;
 }
 
+.alert.alert-success {
+    margin: auto;
+    padding: 20px;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 600px;
+    transition: all 0.3s ease;
+}
+
+.alert.alert-success:hover {
+    background-color: #c3e6cb;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-container{
+    width: 80%;
+
+}
+.form-name{
+    width: 20%;
+}
+.form-email{
+    width: 40%;
+}
+.form-message{
+    width: 90%;
+}
+
+p{
+    margin: 20px auto;
+    padding: 10px;
+    font-size: larger;
+}
 @media (max-width: 600px) {
 
+    #LeMenu {
+        padding-top: 120px;
+    }
 
     .artwork-container {
         padding: 10px;
@@ -421,7 +463,7 @@ footer {
     }
 
     #LeMenu {
-        padding-top: 30px;
+        padding-top: 120px;
     }
 
     .card {
@@ -464,6 +506,11 @@ footer {
 
 }
 @media (min-width: 2000px) {
+    #LeMenu {
+        padding-top: 30px;
+    }
+
+
     .card {
         width: 400px;
         height: 400px;

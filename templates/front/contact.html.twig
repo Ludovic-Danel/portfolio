@@ -1,0 +1,22 @@
+
+
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <h2>Contactez-nous</h2>
+        <p>Pour toute demande de collaboration ou information complémentaire, merci de me contacter via le formulaire ci-dessous.</p>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+        {{ form_row(form.name, {'attr': {'class': 'form-name'}}) }}
+        {{ form_row(form.email, {'attr': {'class': 'form-email'}}) }}
+        {{ form_row(form.message, {'attr': {'class': 'form-message'}}) }}
+        {{ form_row(form.send, {'attr': {'class': 'btn btn-primary'}}) }}
+    {{ form_end(form) }}
+        
+    {% endblock %}
+    

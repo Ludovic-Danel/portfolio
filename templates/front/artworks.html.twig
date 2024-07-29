@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
-{% block body %}
-    <h2>Toutes mes oeuvres</h2>
+    {% block body %}
+        <h2>Toutes mes oeuvres</h2>
+        
+        <div id="response-Ajax">
+            <div class="lastPicture">
+                {% for artwork in pagination.items %}
+                    <div class="card">
+                        <a href="{{ path('app_show', {'id': artwork.id}) }}">
+                            <img class="picture" src="data:image/jpeg;base64,{{ artwork.pictureMin }}" alt="{{ artwork.title }}">
+                            <div class="title">
+                                <p>{{ artwork.drawingCreatedAt|date('F Y') }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+    {% endblock %}
     
-    <div id="response-Ajax">
-        <div class="lastPicture">
-            {% for artwork in pagination.items %}
-                <div class="card">
-                    <a href="{{ path('app_show', {'id': artwork.id}) }}">
-                        <img class="picture" src="data:image/jpeg;base64,{{ artwork.pictureMin }}" alt="{{ artwork.title }}">
-                        <div class="title">
-                            <p>{{ artwork.drawingCreatedAt|date('F Y') }}</p>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="navigation">
-            {{ knp_pagination_render(pagination) }}
-        </div>
-    </div>
-{% endblock %}

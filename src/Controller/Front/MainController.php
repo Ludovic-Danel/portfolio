@@ -91,7 +91,7 @@ class MainController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1), // numéro de la page en cours
-            6 // nombre d'éléments par page
+            8 // nombre d'éléments par page
         );
         if ($request->isXmlHttpRequest()) {
             // Si la requête est une requête AJAX, renvoyez uniquement le contenu nécessaire

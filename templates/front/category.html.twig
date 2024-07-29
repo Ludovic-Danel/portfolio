@@ -3,6 +3,8 @@
 {% block title %}Digital Artist{% endblock %}
 
 {% block body %}
+    <h2>Categories</h2>
+
     <div class="pastille">
         {% for tag in tags %}
             {% if tag.artworks|length > 0 %}

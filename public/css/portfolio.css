@@ -157,8 +157,8 @@ button:hover {
 }
 
 .card {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
     position: relative;
     border-radius: 15px;
@@ -195,7 +195,7 @@ button:hover {
     /* Couleur du texte en blanc */
     text-align: center;
     /* Centre le texte */
-    padding: 8px;
+    padding: 6px;
     /* Ajoute un peu de padding autour du texte */
     box-sizing: border-box;
     /* Assure que le padding est inclus dans la largeur totale */
@@ -411,6 +411,55 @@ p{
     margin: 20px auto;
     padding: 10px;
     font-size: larger;
+}
+.about-container {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.about-picture-gauche, .about-picture-droite {
+    transition: transform 2s ease, opacity 2s ease;
+}
+
+.about-picture-gauche {
+    width: 200px;
+    transform-origin: right center;
+}
+
+.about-picture-droite {
+    width: 200px;
+
+    transform-origin: left center;
+}
+
+/* Style pour l'état activé */
+.separated .about-picture-gauche {
+    transform: translateX(-50vw);
+    opacity: 0.8;
+}
+
+.separated .about-picture-droite {
+    transform: translateX(50vw);
+    opacity: 0.8;
+}
+
+
+.about-text{
+    text-align: justify;
+    width:90%;
+    border-radius: 20px;
+    background-color: rgba(76, 76, 76, 0.9);
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease; /* Durée de la transition pour le texte */
+    transition-delay: 0,8s; /* Délai avant le début de la transition */}
+.separated .about-text {
+    opacity: 1;
 }
 @media (max-width: 600px) {
 

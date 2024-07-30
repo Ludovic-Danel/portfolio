@@ -8,9 +8,17 @@
 
 {% block body %}
 
-   
-    
-    
-    
-    
+   <div class="about-container">
+    <img class="about-picture-gauche" src="{{ asset('images/gauche.png')}}">
+    <img class="about-picture-droite" src="{{ asset('images/droite.png')}}">
+    <p class="about-text"> Dans l'univers infini du digital, je trace des lignes et des formes qui racontent des histoires au-delà du temps. Passé le cap de la quarantaine, je me plonge dans mes passions pour la science-fiction et la culture geek, des sources d’inspiration inépuisables. Chaque pixel de mes créations est imprégné de rêves d'autres mondes et de héros légendaires. J'aime jouer avec les couleurs et les textures, pour donner vie à des visions qui émergent de mon esprit. Mon art est une porte ouverte vers des réalités alternatives, un reflet de mes passions et de mon imagination sans limites.</p>
+   </div>
+   {% block javascripts %}
+    <script>
+		document.querySelector('.about-container').addEventListener('click', function() {
+			this.classList.toggle('separated');
+		});
+    </script>
 {% endblock %}
+{% endblock %}
+

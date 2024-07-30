@@ -24,7 +24,8 @@
 
 		{% endblock %}
 
-		{% block javascripts %}{% endblock %}
+		{% block javascripts %}
+		{% endblock %}
 
 	</head>
 	<body>
@@ -46,6 +47,7 @@
 		</h1>
 		
 		{% block body %}{% endblock %}
+			
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="{{ asset('js/pagination.js') }}"></script>
 		<script src="{{ asset('js/toggleMenu.js') }}"></script>

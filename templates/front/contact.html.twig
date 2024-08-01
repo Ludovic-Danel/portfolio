@@ -1,22 +1,31 @@
-
-
 {% extends 'base.html.twig' %}
+{% block title %}
+	{{'Contactez-moi' }}
+{% endblock %}
+{% block meta_description %}
+	Plongez dans l'univers créatif du digital : science-fiction, culture geek, art visuel. Chaque pixel raconte une histoire.
+{% endblock %}
 
-    {% block body %}
-        <h2>Contactez-nous</h2>
-        <p>Pour toute demande de collaboration ou information complémentaire, merci de me contacter via le formulaire ci-dessous.</p>
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
+{% block body %}
+	<h2>Contactez-moi</h2>
+	<p>Pour toute demande de collaboration ou information complémentaire, merci de me contacter via le formulaire ci-dessous.</p>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 
-    {{ form_start(form, {'attr': {'class': 'form-container'}}) }}
-        {{ form_row(form.name, {'attr': {'class': 'form-name'}}) }}
-        {{ form_row(form.email, {'attr': {'class': 'form-email'}}) }}
-        {{ form_row(form.message, {'attr': {'class': 'form-message'}}) }}
-        {{ form_row(form.send, {'attr': {'class': 'btn btn-primary'}}) }}
-    {{ form_end(form) }}
-        
-    {% endblock %}
-    
+	{{ form_start(form, {'attr': {'class': 'form-container'}}) }}
+	{{ form_row(form.name, {'attr': {'class': 'form-name'}}) }}
+	{{ form_row(form.email, {'attr': {'class': 'form-email'}}) }}
+	{{ form_row(form.message, {'attr': {'class': 'form-message'}}) }}
+	<div class="form-row">
+		{{ form_label(form.consent, null, {'label_attr': {'class': 'form-label-inline'}}) }}
+        {{ form_widget(form.consent, {'attr': {'class': 'form-consent'}}) }}
+
+	</div>
+	{{ form_row(form.send, {'attr': {'class': 'btn btn-primary'}}) }}
+	{{ form_end(form) }}
+	<p>En soumettant ce formulaire, vous acceptez notre
+		<a  class="confidentialité" href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
+{% endblock %}

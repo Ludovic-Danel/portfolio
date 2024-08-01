@@ -117,5 +117,18 @@ class MainController extends AbstractController
              ]);
 
     }
+     /**
+     * @route("/politique-confidentialité", name="app_privacy")
+     *
+     * 
+     * @return Response
+     */
+    public function privacy(): Response
+    {
+
+        return $this->render('front/privacy.html.twig', [
+             ]);
+
+    }
 
 }

@@ -34,7 +34,6 @@ header {
     max-width: 1400px;
     margin: auto;
     display: flex;
-    justify-content: center;
 }
 
 #LeMenu>a {
@@ -104,11 +103,13 @@ header {
 
 
 h2 {
+    text-align: center;
     margin: 70px auto 20px auto;
     padding: 1em;
 }
 
 h3 {
+    text-align: center;
     padding: 20px;
 }
 
@@ -406,7 +407,32 @@ footer {
 .form-message{
     width: 90%;
 }
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.form-label-inline.required {
+    width: fit-content;
+    margin-right: 10px;
+}
 
+.form-input {
+    flex: 1;
+}
+
+.form-label-inline {
+    margin-left: 10px;
+}
+
+.form-consent {
+    margin: 0px;
+    width: 13px;
+}
+.confidentialité{
+    font-weight: 900;
+    text-decoration: underline;
+}
 p{
     margin: 20px auto;
     padding: 10px;
@@ -461,6 +487,11 @@ p{
 .separated .about-text {
     opacity: 1;
 }
+.privacy{
+    text-align: justify;
+    padding: 10px;
+
+}
 @media (max-width: 600px) {
 
     #LeMenu {
@@ -504,6 +535,22 @@ p{
     div.pastille a {
         width: 30%;
     }
+
+    .about-picture-gauche {
+        width: 300px;
+    }
+    
+    .about-picture-droite {
+        width: 300px;
+    }
+    .about-text{
+        font-size: x-large;
+        width: 60%;
+    }
+.privacy{
+    margin: auto;
+    width: 80%;
+}
 }
 
 @media (min-width: 1024px) {
@@ -512,7 +559,7 @@ p{
     }
 
     #LeMenu {
-        padding-top: 120px;
+        padding-top: 40px;
     }
 
     .card {
@@ -552,7 +599,12 @@ p{
         margin: 15px;
         aspect-ratio: 3;
     }
-
+    .privacy{
+        background-color: #535456;
+        width: 60%;
+        border-radius: 20px;
+    }
+    
 }
 @media (min-width: 2000px) {
     #LeMenu {
